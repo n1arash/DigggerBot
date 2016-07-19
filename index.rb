@@ -20,7 +20,6 @@ end
 
 def dig(address)
   digged = Resolver(address)
-  digged
 end
 
 
