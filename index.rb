@@ -1,5 +1,4 @@
 require 'telegram/bot'
-require 'ip_info'
 require 'net/dns'
 
 TOKEN = "205192920:AAF98akmUeJ4EnR8ALHndtf5tUl9oS7sOcs"
