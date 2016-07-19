@@ -1,6 +1,6 @@
 require 'telegram/bot'
 require 'ip_info'
-
+require 'net/dns'
 
 TOKEN = "205192920:AAF98akmUeJ4EnR8ALHndtf5tUl9oS7sOcs"
 @ip_info= IpInfo::API.new(api_key: "912356c310fe9eadc5ac89d9a73c908077eb2dc06fb72775853f07585fe7f395")
@@ -8,7 +8,6 @@ TOKEN = "205192920:AAF98akmUeJ4EnR8ALHndtf5tUl9oS7sOcs"
 def get_from_address(message)
   message[/([\d.]+|(?:https?:\/\/)?(?:[\w]+\.)?[\w]+\.[\w]+)/]
 end
-
 def get_info(address,type)
   return 'Error: Address is invalid ' unless address
 
@@ -18,6 +17,12 @@ def get_info(address,type)
   end
   data
 end
+
+def dig(address)
+  digged = Resolver(address)
+  digged
+end
+
 
 help = """
 You Can Use Me By These Commands :
@@ -33,6 +38,8 @@ Telegram::Bot::Client.run(TOKEN) do |bot|
         bot.api.send_message(chat_id: message.chat.id, text: "Hello #{message.from.first_name} Welcome To DigggerBot U Can Use /help for commands list")
       when /\/whois [\w\W]+/
         bot.api.send_message(chat_id: message.chat.id, text: get_info(get_from_address(message.text),'city'))
+      when /\/dig [\w\W]+/
+        bot.api.send_message(chat_id: message.chat.id, text: dig(get_from_address(message.text)))
       when '/help'
         bot.api.send_message(chat_id: message.chat.id ,text: help)
       when '/end'
