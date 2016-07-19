@@ -21,6 +21,7 @@ GEM
     json (1.8.3)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    net-dns (0.8.0)
     telegram-bot-ruby (0.5.3)
       faraday
       virtus
@@ -36,6 +37,7 @@ PLATFORMS
 
 DEPENDENCIES
   ip_info
+  net-dns
   telegram-bot-ruby
 
 BUNDLED WITH
