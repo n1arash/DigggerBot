@@ -1,6 +1,6 @@
 # DiggerBot
 A Dead Simple Bot For Digging And Whois !
-### Forks Welcome :)
+### PR Welcome :)
 
 ### ID : @DigggerBot
 
